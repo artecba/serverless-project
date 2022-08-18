@@ -8,9 +8,9 @@
   </head>
   <body>
     <h1>Serverless Functions</h1>
-    <button id="fetch-btn">Fetch</button>
-    <button id="fetch-kanto-btn">Fetch Kanto Pokedex</button>
-    <button id="fetch-hoenn-btn">Fetch Hoenn Pokedex</button>
+    <button id="fetch-btn">Simple Fetch</button>
+    <button id="fetch-kanto-btn">Fetch Kanto</button>
+    <button id="fetch-hoenn-btn">Fetch Pokedex</button>
     <button id="fetch-posts-getall-btn">Fetch Posts</button>
     <p id="response-output"></p>
 
@@ -44,7 +44,7 @@
           }).then(response => response.json())
           responseText.innerText = JSON.stringify(response)
         }),
-        fetchHoennBtn.addEventListener('click', async () => {
+        fetchPostsGetAllBtn.addEventListener('click', async () => {
           const response = await fetch('/.netlify/functions/posts').then(response => response.json())
           responseText.innerText = JSON.stringify(response)
         })
