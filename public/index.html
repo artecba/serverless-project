@@ -11,13 +11,15 @@
     <button id="fetch-btn">Fetch</button>
     <button id="fetch-kanto-btn">Fetch Kanto Pokedex</button>
     <button id="fetch-hoenn-btn">Fetch Hoenn Pokedex</button>
-    <p id="response-output">Response Placeholder</p>
+    <button id="fetch-posts-getall-btn">Fetch Posts</button>
+    <p id="response-output"></p>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const fetchBtn = document.getElementById('fetch-btn')
         const fetchKantoBtn = document.getElementById('fetch-kanto-btn')
         const fetchHoennBtn = document.getElementById('fetch-hoenn-btn')
+        const fetchPostsGetAllBtn = document.getElementById('fetch-posts-getall-btn')
         const responseText = document.getElementById('response-output')
 
         fetchBtn.addEventListener('click', async () => {
@@ -40,6 +42,10 @@
               region: 'hoenn'
             })
           }).then(response => response.json())
+          responseText.innerText = JSON.stringify(response)
+        }),
+        fetchHoennBtn.addEventListener('click', async () => {
+          const response = await fetch('/.netlify/functions/posts').then(response => response.json())
           responseText.innerText = JSON.stringify(response)
         })
       })
